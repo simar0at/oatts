@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/google/oatts.git"
+    "url": "https://github.com/simar0at/oatts.git"
   },
   "main": "index.js",
   "bin": {
@@ -23,14 +23,14 @@
   "author": "Noah Dietz",
   "license": "Apache-2.0",
   "dependencies": {
-    "commander": "^2.20.0",
-    "handlebars": "^4.1.2",
-    "sway": "^2.0.6"
+    "commander": "^10.0.1",
+    "handlebars": "^4.7.7",
+    "sway": "apigee-127/sway#master"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "docdash": "^0.4.0",
-    "jsdoc": "^3.6.3",
-    "mocha": "^5.2.0"
+    "chai": "^4.3.7",
+    "docdash": "^2.0.1",
+    "jsdoc": "^4.0.2",
+    "mocha": "^10.2.0"
   }
 }
