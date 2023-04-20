@@ -104,7 +104,7 @@
   },
   "/pet": {
     "post": {
-      "201": {
+      "405": {
         "body": {
           "body": {
             "name": "doggie",

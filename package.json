@@ -23,12 +23,15 @@
   "author": "Noah Dietz",
   "license": "Apache-2.0",
   "dependencies": {
+    "@readme/openapi-parser": "^2.5.0",
     "commander": "^10.0.1",
     "handlebars": "^4.7.7",
     "sway": "apigee-127/sway#master"
   },
   "devDependencies": {
+    "@readme/oas-examples": "^5.10.0",
     "chai": "^4.3.7",
+    "chai-match": "^1.1.1",
     "docdash": "^2.0.1",
     "jsdoc": "^4.0.2",
     "mocha": "^10.2.0"
