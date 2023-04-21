@@ -1,4 +1,4 @@
-it('{{testLevelDescription}}', function() {
+it('{{testLevelDescription}}', async () => {
             var response = request('{{op}}', '{{scheme}}://{{host}}{{path}}', { {{#if (notEmptyObject query)}}
                 'qs': {{json query}},{{/if}}{{#if (notEmptyObject body)}}
                 'body': {{json body}},{{/if}}{{#if (notEmptyObject formData)}}
@@ -17,5 +17,5 @@ it('{{testLevelDescription}}', function() {
             expect(response).to.have.schema({{json expected.res}});
             {{/if}}
             {{/if}}
-            return chakram.wait();
+            return wait();
         });
