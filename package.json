@@ -26,7 +26,7 @@
     "@readme/openapi-parser": "^2.5.0",
     "commander": "^10.0.1",
     "handlebars": "^4.7.7",
-    "sway": "apigee-127/sway#master"
+    "sway": "simar0at/sway#master"
   },
   "devDependencies": {
     "@readme/oas-examples": "^5.10.0",
