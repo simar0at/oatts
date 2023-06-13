@@ -27,6 +27,7 @@ cli.command('generate')
     .description(
         'generate unit test scaffolding for a given OpenAPI/Swagger Spec')
     .option('--host <host>', 'target hostname to use in test generation')
+    .option('--ext <extension>', 'generated file extension other than .js')
     .option('-p, --paths <paths>',
         'comma separated list of paths to generate tests for', util.sep)
     .option('-e, --samples',
