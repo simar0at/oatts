@@ -1,8 +1,8 @@
 describe('{{operationLevelDescription}}', () => {
-{{#each operationLevelTests}}
-        {{this}}{{#unless @last}}
-
-        {{/unless}}
-{{/each}}
+{{#each transactions}}
+    {{> transactionLevel}}{{#unless @last}}
     
+    {{/unless}}
+{{/each}}
+
     });

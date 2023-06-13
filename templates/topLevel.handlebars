@@ -1,4 +1,6 @@
 import { request } from 'chakram/lib/methods'
 import { expect, wait } from 'chakram'
 
-{{test}}
+{{#with processedPath}}
+{{> pathLevel}}
+{{/with}}

@@ -1,6 +1,6 @@
 describe('{{pathLevelDescription}}', () => {
-{{#each tests}}
-    {{this}}{{#unless @last}}
+{{#each operations}}
+    {{> operationLevel}}{{#unless @last}}
     
     {{/unless}}
 {{/each}}
