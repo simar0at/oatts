@@ -1,5 +1,7 @@
-import { request } from 'chakram/lib/methods'
-import { expect, wait } from 'chakram'
+import { expect, describe, it } from 'vitest'
+import { FetchError, ofetch } from "ofetch"
+import { z } from "zod"
+import { jsonSchemaToZod } from "json-schema-to-zod"
 
 {{#with processedPath}}
 {{> pathLevel}}

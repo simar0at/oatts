@@ -1,21 +1,33 @@
 it('{{testLevelDescription}}', async () => {
-            var response = request('{{op}}', '{{scheme}}://{{host}}{{path}}', { {{#if (notEmptyObject query)}}
-                'qs': {{json query}},{{/if}}{{#if (notEmptyObject body)}}
-                'body': {{json body}},{{/if}}{{#if (notEmptyObject formData)}}
-                'formData': {{json formData}},{{/if}}{{#if (notEmptyObject headers)}}
-                'headers': {{json headers}},{{/if}}
-                'time': true
-            });
-
-            {{#if (isNotDefaultStatusCode expected.statusCode)}}
-            expect(response).to.have.status({{expected.statusCode}});
-            {{/if}}
-            {{#if expected.res}}
-            {{#if hasValue}}
-            expect(response).to.comprise.of.json({{json expected.res}});
-            {{else}}
-            expect(response).to.have.schema({{json expected.res}});
-            {{/if}}
-            {{/if}}
-            return wait();
+            const baseURL = '{{scheme}}://{{host}}'
+            try {
+                const res = await ofetch.raw("{{path}}", {
+                    baseURL,
+                    method: "{{op}}",{{#if (notEmptyObject query)}}
+                    query: {{json query}},{{/if}}{{#if (notEmptyObject headers)}}
+                    headers: {{json headers}},{{/if}}{{#if (notEmptyObject body)}}
+                    body: {{json body}},{{/if}}{{#if (notEmptyObject formData)}}
+                    headers: { 'Content-Disposition': formData },
+                    body: {{json formData}},{{/if}} })
+                expect(res.status).to.equal({{expected.statusCode}})
+                {{#if expected.res}}
+                {{#if hasValue}}
+                expect(res._data).to.comprise.of.json({{json expected.res}});
+                {{else}}
+                const zodSchema = eval(jsonSchemaToZod({{json expected.res}}))
+                zodSchema.parse(res._data)
+                {{/if}}
+                {{/if}}
+            } catch (e) {
+                if (e instanceof FetchError) {
+                    const err: FetchError = e
+                    {{#ifCond expected.statusCode '>=' 300}}
+                    expect(err.status).to.equal({{expected.statusCode}})
+                    {{else}}
+                    expect(err).to.be.undefined("No error expected")
+                    {{/ifCond}}
+                } else {
+                    throw e
+                }
+            }
         });
